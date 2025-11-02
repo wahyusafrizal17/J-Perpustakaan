@@ -47,7 +47,7 @@ if($_SESSION['admin'] || $_SESSION['user']) {
     <!-- Sidebar -->
     <aside class="sidebar">
         <div class="sidebar-header">
-            <h2 class="logo" style="font-weight: bolder;">SIPA</h2>
+            <h2 class="logo" style="font-weight: bolder;">Manggala Buana</h2>
         </div>
 
         <ul class="sidebar-menu">
