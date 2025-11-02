@@ -8,7 +8,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 
 // Koneksi Database
-$koneksi = new mysqli("localhost", "root", "", "db_perpustakaan");
+require_once __DIR__ . '/../koneksi.php';
 
 // Ambil data filter tanggal
 $tgl1 = $_POST['tanggal1'] ?? '';

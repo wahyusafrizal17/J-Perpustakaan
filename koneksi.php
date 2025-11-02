@@ -1,9 +1,9 @@
 <?php
 // Konfigurasi database
-$host     = "localhost";  // default Laragon
-$user     = "root";       // user default Laragon
-$password = "WahyuJR17_";           // password kosong di Laragon
-$database = "db_perpustakaan"; // ganti sesuai nama database kamu
+$host     = "localhost";
+$user     = "xiwaysta_xiway";
+$password = "WahyuJR17_";
+$database = "xiwaysta_perpustakaan";
 
 // Buat koneksi
 $koneksi = new mysqli($host, $user, $password, $database);

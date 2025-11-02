@@ -1,5 +1,5 @@
 <?php
-    $koneksi = new mysqli("localhost","xiwaysta_xiway","WahyuJR17_","xiwaysta_perpustakaan");
+    include "koneksi.php";
 
     $filter_tahun = isset($_GET['tahun']) ? (int)$_GET['tahun'] : date('Y');
     $filter_bulan = isset($_GET['bulan']) ? (int)$_GET['bulan'] : date('m');

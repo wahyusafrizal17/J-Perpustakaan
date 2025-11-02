@@ -1,5 +1,5 @@
 <?php  
-	$koneksi = new mysqli("localhost","xiwaysta_xiway","WahyuJR17_","xiwaysta_perpustakaan");
+	include "../../koneksi.php";
 
 
 	echo $_POST['judul'];
