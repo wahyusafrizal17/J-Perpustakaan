@@ -5,7 +5,7 @@
     session_start();
 
 
-  $koneksi = new mysqli("localhost","root","WahyuJR17_","db_perpustakaan");
+  $koneksi = new mysqli("localhost","xiwaysta_xiway","WahyuJR17_","xiwaysta_perpustakaan");
 
   if($_SESSION['admin'] || $_SESSION['user']){
         header("location:index.php");

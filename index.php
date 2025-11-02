@@ -2,7 +2,7 @@
 error_reporting(0);
 session_start();
 
-$koneksi = new mysqli("localhost","root","WahyuJR17_","db_perpustakaan");
+$koneksi = new mysqli("localhost","xiwaysta_xiway","WahyuJR17_","xiwaysta_perpustakaan");
 include "function.php";
 
 if($_SESSION['admin'] || $_SESSION['user']) {
