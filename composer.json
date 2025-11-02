@@ -1,0 +1,17 @@
+{
+    "name": "asus/perpustakaan",
+    "autoload": {
+        "psr-4": {
+            "Asus\\Perpustakaan\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "asus"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "1.23",
+        "dompdf/dompdf": "^3.1"
+    }
+}
