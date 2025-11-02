@@ -1,3 +1,16 @@
+<?php
+// Cek apakah user adalah admin
+if (!isset($_SESSION['admin'])) {
+    ?>
+    <script type="text/javascript">
+        alert("Anda tidak memiliki akses untuk import data!");
+        window.location.href="?page=buku";
+    </script>
+    <?php
+    exit();
+}
+?>
+
 <div class="panel panel-default">
     <div class="panel-heading">
         <strong>Import Data Buku dari File Excel</strong>

@@ -3,6 +3,18 @@
 // IMPORT DATA BUKU DARI FILE EXCEL
 // ============================================================
 
+// Cek apakah user adalah admin
+session_start();
+if (!isset($_SESSION['admin'])) {
+    ?>
+    <script type="text/javascript">
+        alert("Anda tidak memiliki akses untuk import data!");
+        window.location.href="../../index.php?page=buku";
+    </script>
+    <?php
+    exit();
+}
+
 // Pastikan koneksi dan autoload sudah dipanggil
 require_once __DIR__ . '/../../koneksi.php';
 require_once __DIR__ . '/../../vendor/autoload.php';

@@ -70,7 +70,6 @@ if($_SESSION['admin'] || $_SESSION['user']) {
                     <li><a href="?page=anggota" class="<?php echo ($page == 'anggota' ? 'active' : ''); ?>">Data Anggota</a></li>
                     <li><a href="?page=presensi" class="<?php echo ($page == 'presensi' ? 'active' : ''); ?>">Presensi</a></li>
                 <?php } else { ?>
-                    <li><a href="?page=lokasi" class="<?php echo ($page == 'lokasi' ? 'active' : ''); ?>">Data Lokasi Buku</a></li>
                     <li><a href="?page=buku" class="<?php echo ($page == 'buku' ? 'active' : ''); ?>">Data Buku</a></li>
                     <li><a href="?page=presensi" class="<?php echo ($page == 'presensi' ? 'active' : ''); ?>">Presensi</a></li>
                 <?php } ?>

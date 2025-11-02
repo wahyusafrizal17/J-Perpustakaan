@@ -1,3 +1,16 @@
+<?php
+// Cek apakah user adalah admin
+if (!isset($_SESSION['admin'])) {
+    ?>
+    <script type="text/javascript">
+        alert("Anda tidak memiliki akses untuk menambah data!");
+        window.location.href="?page=lokasi";
+    </script>
+    <?php
+    exit();
+}
+?>
+
 <script type="text/javascript" >
     function validasi(form){
         if (form.lokasi.value=="") {
