@@ -1,6 +1,36 @@
 <?php
 $pinjam = date("d-m-Y");
 $kembali = date("d-m-Y", strtotime("+7 days"));
+
+// Jika login sebagai user (bukan admin), cari NIS anggota berdasarkan user yang login
+$selected_nis = '';
+if (isset($_SESSION['user']) && !isset($_SESSION['admin'])) {
+    // Ambil data user yang sedang login
+    $user_id = $_SESSION['user'];
+    $user_query = $koneksi->query("SELECT * FROM tb_user WHERE id = '$user_id'");
+    
+    if ($user_query && $user_query->num_rows > 0) {
+        $user_data = $user_query->fetch_assoc();
+        $username = $user_data['username'];
+        $nama_user = isset($user_data['nama']) ? $user_data['nama'] : '';
+        
+        // Cari anggota berdasarkan nama atau username (case insensitive)
+        if (!empty($nama_user) || !empty($username)) {
+            $nama_user_escaped = $koneksi->real_escape_string($nama_user);
+            $username_escaped = $koneksi->real_escape_string($username);
+            
+            $sql_anggota = "SELECT * FROM tb_anggota WHERE LOWER(nama) LIKE LOWER('%$nama_user_escaped%') OR LOWER(nama) LIKE LOWER('%$username_escaped%') LIMIT 1";
+            $anggota_query = $koneksi->query($sql_anggota);
+            
+            if ($anggota_query !== false && $anggota_query->num_rows > 0) {
+                $anggota_data = $anggota_query->fetch_assoc();
+                if ($anggota_data && isset($anggota_data['nis']) && !empty($anggota_data['nis'])) {
+                    $selected_nis = $anggota_data['nis'];
+                }
+            }
+        }
+    }
+}
 ?>
 
 <div class="panel panel-default">
@@ -22,15 +52,19 @@ $kembali = date("d-m-Y", strtotime("+7 days"));
 
             <div class="form-group">
                 <label>Nama Anggota</label>
-                <select class="form-control" name="nis" required>
+                <select class="form-control" name="nis" required <?php echo (isset($_SESSION['user']) && !isset($_SESSION['admin']) && !empty($selected_nis)) ? 'disabled' : ''; ?>>
                     <option value="">== Pilih ==</option>
                     <?php
                     $query = $koneksi->query("SELECT * FROM tb_anggota ORDER BY nis");
                     while ($anggota = $query->fetch_assoc()) {
-                        echo "<option value='{$anggota['nis']}'>{$anggota['nis']} - {$anggota['nama']}</option>";
+                        $selected = ($anggota['nis'] == $selected_nis) ? 'selected' : '';
+                        echo "<option value='{$anggota['nis']}' $selected>{$anggota['nis']} - {$anggota['nama']}</option>";
                     }
                     ?>
                 </select>
+                <?php if (isset($_SESSION['user']) && !isset($_SESSION['admin']) && !empty($selected_nis)) { ?>
+                <input type="hidden" name="nis" value="<?php echo $selected_nis; ?>">
+                <?php } ?>
             </div>
 
             <div class="form-group">

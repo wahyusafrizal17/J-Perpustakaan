@@ -48,6 +48,9 @@
                 <input type="password" name="pass" placeholder="Password" required />
                 <button type="submit" name="login">Masuk</button>
             </form>
+            <div class="copyright">
+                <p>&copy; <?php echo date('Y'); ?> Azka Uinkhas. All rights reserved.</p>
+            </div>
         </div>
     </div>
   </div>
